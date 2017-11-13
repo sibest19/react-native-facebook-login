@@ -7,6 +7,7 @@ import {
   NativeModules,
   NativeMethodsMixin,
   DeviceEventEmitter,
+  ViewPropTypes,
   requireNativeComponent
 } from 'react-native';
 
@@ -89,8 +90,11 @@ class FBLogin extends Component {
   }
 }
 
+//Fallback when RN version is < 0.44
+const viewPropTypes = ViewPropTypes || View.propTypes;
+
 FBLogin.propTypes = {
-  style: View.propTypes.style,
+  style: viewPropTypes.style,
   permissions: PropTypes.array, // default: ["public_profile", "email"]
   loginBehavior: PropTypes.number, // default: Native
   onLogin: PropTypes.func,
